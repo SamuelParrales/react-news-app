@@ -1,0 +1,54 @@
+@use '../../abstracts/variables' as v;
+@use '../../abstracts/mixins' as m;
+
+
+.featured-news{
+
+    display: flex;
+    align-items: center;
+    background-image: 
+        linear-gradient(to right, rgb(0 0 0 /.95) 25%, rgb(0 0 0 /.5) 50%,  transparent),
+        url(prueba.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+   
+    background-position: right, right center;
+
+       
+    @include m.phone{
+        min-height: 35rem;
+    }
+
+    @include m.tablet{
+        min-height: 40rem;
+    }
+    @include m.desktop{
+        min-height: 50rem;
+    }
+
+    &__grid
+    {     
+        @include m.tablet{
+            display: grid;
+            grid-template-columns: 60% 40%;
+        }
+        @include m.desktop
+        {
+            
+            
+            grid-template-columns: 40% 60%;
+        }
+    }
+ 
+ 
+    &__title{
+        color: #fff;
+        @include m.heading(v.$color-primary);
+    }
+
+
+    &__description{
+        color: #fff;
+    }
+}

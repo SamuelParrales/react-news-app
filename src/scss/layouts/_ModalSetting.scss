@@ -1,0 +1,30 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+
+.modal-setting{
+
+    &__grid{
+        display: grid;
+        grid-template-columns: repeat(3,1fr)
+    }
+    &__btn:first-child{
+        border-radius: 5px 0 0 0;
+    }
+    &__btn{
+        @include m.btn(lighten(v.$color-muted,25),#000);
+        border-radius: 0;
+    }
+ 
+    &__btn--selected{
+        background-color: v.$color-primary;
+        color: #fff;
+    }
+    
+  
+    &__btn--selected:hover{
+        background-color: v.$color-primary;
+        color: #fff;
+    }
+    
+}

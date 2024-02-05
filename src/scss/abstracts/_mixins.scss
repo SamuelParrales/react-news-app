@@ -1,0 +1,52 @@
+@use 'variables' as v; 
+/** Media Queries **/
+
+@mixin phone {
+    @media (min-width: v.$phone) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: v.$tablet) {
+        @content;
+    }
+}
+  
+@mixin desktop {
+    @media (min-width: v.$desktop) {
+        @content;
+    }
+}
+
+
+
+@mixin btn($bgColor, $text-color) {
+    background-color: $bgColor;
+    padding: 1rem;
+    color: $text-color;
+    font-weight: 400;
+    display: inline-block;
+    border: 1px solid v.$color-muted;
+    transition-property: background-color;
+    transition-duration: .3s;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover {
+        background-color: darken( $bgColor, 10% );
+    }
+}
+
+
+// titles
+
+@mixin heading($color, $lenBorder:6px){
+    display: flex;
+    &::before{
+        content: '';
+        border-left: $lenBorder solid $color;
+        margin-left: -$lenBorder*2;
+        margin-right: $lenBorder;
+    }
+}

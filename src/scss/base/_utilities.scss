@@ -1,0 +1,145 @@
+@use '../abstracts/mixins' as m;
+@use '../abstracts/variables' as v;
+.container,
+[class*="__container"]{
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.global-container,
+.home-container{
+   
+    @include m.tablet{
+        display: grid;
+        grid-template-columns: 75% 25%;
+        grid-template-rows: 2;
+     
+    }
+    @include m.desktop{
+        display: grid;
+        grid-template-columns: 80% 20%;
+        grid-template-rows: 2;
+     
+    }
+}
+
+
+// Margins
+.m-2{
+    margin: 2rem;
+}
+.me-1{
+    margin-right: 1rem;
+}
+.me-3{
+    margin-right: 3rem;
+}
+.mt-2{
+    margin-top: 2rem;
+
+}
+.mt-1{
+    margin-top: 1rem;
+
+}
+.pt-1{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.pt-2{
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+
+.pe-md-2{
+    @include m.tablet{
+        padding-right: 2rem;
+    }
+}
+.pe-2{
+    padding-right: 2rem;
+}
+
+.bs{
+    box-shadow: 0px 0px 2px ;
+}
+.rounded{
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.be-md-1{
+    @include m.tablet{
+        border-right: 0.1px solid v.$color-muted;
+    }
+}
+
+.form-input{
+    padding: 5px;
+    
+    font-size: 1.8rem;
+    border-radius: 6px;
+    width: 100%;
+    transition-duration: .3s;
+    transition-property: border-color box-shadow;
+    transition-timing-function: ease-in-out;
+    border-width: 2px;
+
+}
+.form-input:hover{
+    border-color: v.$color-primary;
+    
+}
+.form-input:focus{
+    outline: none;
+    border-color: v.$color-primary;
+    box-shadow: 0px 0px 5px  v.$color-primary;
+}
+// .mt-2{
+// }
+
+
+// Display
+.d-inline-block{
+    display: inline-block;
+}
+.d-block{
+    display: block;
+}
+.d-flex{
+    display: flex;
+}
+
+.justify-center{
+    justify-content: center;
+}
+
+.justify-between{
+    justify-content: space-between;
+}
+
+// Buttons
+
+.btn-transparent{
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    margin: 0;
+    padding: 0;
+    transition-duration: .5s;
+}
+
+.btn-transparent:hover{
+    color: v.$color-primary;
+}
+
+.w-min{
+    width: max-content;
+}
+
+.bg-white{
+    background-color: #fff;
+}

@@ -1,0 +1,11 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+.aside{
+    position: sticky;
+    top: 50px;
+    height: min-content;
+    margin-left: 2rem;
+    &__heading{
+        @include m.heading(v.$color-primary);
+    }
+}

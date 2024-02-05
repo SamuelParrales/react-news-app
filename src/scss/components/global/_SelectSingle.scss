@@ -1,0 +1,103 @@
+@use '../../abstracts/variables' as v;
+@use '../../abstracts/mixins' as m;
+
+
+.select-single{
+    position: relative;
+    width: min-content;
+    font-size: 1.8rem;
+    &__current-element{
+       
+        padding: 5px;     
+        border-radius: 6px;
+       
+        transition-duration: .2s;
+        transition-property: border-color box-shadow;
+        transition-timing-function: ease-in;
+      
+        color: v.$color-muted;
+        cursor: pointer;
+        display: flex;
+        gap: 5px;
+       
+      
+    }
+
+    &__current-element:hover{
+        border-color: v.$color-primary;
+     
+    }
+    &__current-element--focus{
+        border-color: v.$color-primary;
+        box-shadow: 0px 0px 5px  v.$color-primary;
+    }
+
+    &__elements-container{
+      
+        position: relative;
+    }
+    &__elements-list{
+        
+        position: absolute;
+        width: 100%;
+        background-color: #fff;
+        color: darken(v.$color-muted,  10%);
+      
+       
+        border-radius: 6px; 
+        // display: none;
+
+        // Animation
+        z-index: 5;
+        height: 0%;
+        overflow: hidden;
+        transition-duration: .3s;
+        transition-timing-function: ease-in-out;
+        transition-property: height;
+       
+        width: max-content;
+        right: 0;
+    }
+
+    &__elements-list--show{
+        box-shadow: 0px 0px 5px 1px v.$color-muted;
+        overflow-y: auto;
+        transition-duration: .3s;
+        transition-timing-function: ease-in;
+        transition-property: height ;
+ 
+        // max-height: 500px;
+    }   
+
+   
+
+    &__element{
+        padding: 5px;
+    
+        
+    }   
+    &__element--selected{
+        background: v.$color-primary;
+        color: #fff;
+    }
+    &__element,
+    &__element--selected{
+        transition-duration: .3s;
+        transition-timing-function: ease-in-out;
+        transition-property: background-color color;
+    }
+  
+    &__element:hover{
+        background-color: lighten(v.$color-muted, $amount: 20%);
+        cursor: pointer;
+     
+    }
+
+    &__element--selected:hover{
+        background: darken($color: v.$color-primary, $amount: 10%);
+        color: #fff;
+    }
+
+  
+  
+}

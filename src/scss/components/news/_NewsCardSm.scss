@@ -1,0 +1,21 @@
+@use '../../abstracts/variables' as v;
+@use '../../abstracts/mixins' as m;
+
+
+.news-card-sm{
+    margin-top: 2rem;
+    &__heading{
+        font-size: 1.5rem;
+        margin: 0 0 5px 0;
+        text-align: left;
+        
+        @include m.heading(v.$color-muted, 4px);
+    }
+    &__metadata{
+        text-align: right;
+       
+        color: darken($color: v.$color-muted, $amount: 30);
+    }
+
+
+}

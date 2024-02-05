@@ -1,0 +1,38 @@
+@use '../../abstracts/variables' as v;
+@use '../../abstracts/mixins' as m;
+
+.news-card-lg{
+    display: grid;
+    overflow: hidden;
+    
+   
+   
+    @include m.tablet{
+        height: 200px;
+    
+        grid-template-columns: 40% 60%;
+    }
+
+    &__img-container{
+      
+    }
+
+    &__img{
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    
+    &__title{
+        font-size: 20px;
+    }
+    &__content{
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+
+}

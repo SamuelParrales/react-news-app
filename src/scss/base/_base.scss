@@ -1,0 +1,27 @@
+@use '../abstracts/variables' as v; 
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+  
+body {
+    font-family: v.$font-primary;
+    font-size: 1.4rem;
+    background-color: #f5f5f5;
+    font-weight: 400;
+    height: 100vh;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+ul {
+    padding:0;
+    list-style: none;
+    margin: 0;
+}
