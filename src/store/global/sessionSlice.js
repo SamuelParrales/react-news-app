@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const country = localStorage.getItem('lang') || 'us';
+
 export const sessionSlice = createSlice({
     name: 'session',
     initialState: {
         lang: localStorage.getItem('lang')|| window.navigator.language.slice(0,2),
-        country:country,
+        country:'',
         lat: '',
         lon: '',
     },

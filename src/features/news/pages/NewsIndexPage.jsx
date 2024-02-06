@@ -7,7 +7,7 @@ import { useQuery } from "react-query"
 import { newsApi } from "../../../api/newsApi"
 import { NewsCardLg } from "../components/NewsCardLg"
 import { setNewsSearch, setSearchText } from "../../../store/aside/newsSlice"
-import { useDocumentTitle, useLang,useRequestCounter } from "../../../hooks"
+import { useDocumentTitle, useLang, useRequestCounter } from "../../../hooks"
 import { WithoutResults } from "../../../components/WithoutResults"
 import { Icon } from "@iconify/react"
 
@@ -80,29 +80,38 @@ export const NewsIndexPage = memo(function NewsIndexPage() {
     }
 
 
-  }, [searchParams,news,refetchSerch])
-   //Fin de Controla las peticiones cuandos los searchs params cambian
+  }, [searchParams, news, refetchSerch])
+  //Fin de Controla las peticiones cuandos los searchs params cambian
 
-  useEffect(()=>{     //En caso de que el idioma o pais cambie vuelve a realizar la petición
+  useEffect(() => {     //En caso de que el idioma o pais cambie vuelve a realizar la petición
     refetchSerch();
-  },[country,lang,refetchSerch])
+  }, [country, lang, refetchSerch])
 
-  useEffect(()=>{ //Se ejetcuta una sola vez, para colocar el texto en el buscador
-    dispatch(setSearchText({searchText: currentQ || ''}))
-  },[dispatch,currentQ])
+  useEffect(() => { //Se ejetcuta una sola vez, para colocar el texto en el buscador
+    dispatch(setSearchText({ searchText: currentQ || '' }))
+  }, [dispatch, currentQ])
 
 
-  useEffect(()=>{  // Para indicar que las peticiones han terminado
-    if(countRequest==0)
-      setHasLoaded(true)
+  useEffect(() => {  // Para indicar que las peticiones han terminado
+    let timer = null;
+    if (countRequest == 0) {
+      timer = setTimeout(() => {
+        setHasLoaded(true)
+      }, 20);
+    }
     else
       setHasLoaded(false)
-  },[countRequest])
+
+    return () => {
+      if (timer)
+        clearTimeout(timer)
+    }
+  }, [countRequest])
 
 
   // Functiones
 
-  const onClearCategory = ()=>{
+  const onClearCategory = () => {
     searchParams.delete('category');
     navigate({
       pathname: '/news',
@@ -115,19 +124,19 @@ export const NewsIndexPage = memo(function NewsIndexPage() {
 
         <main className="">
           {
-            currentCategory 
-            ? 
-            <div>
-              <h2 className="d-inline-block">{Lang(currentCategory[0].toLocaleUpperCase()+currentCategory.slice(1))}</h2>
-              <button onClick={onClearCategory} className="btn-transparent"><Icon icon='material-symbols:close'/></button>
-            </div>
-            : <h2>{Lang('All categories')}.</h2>
-          } 
+            currentCategory
+              ?
+              <div>
+                <h2 className="d-inline-block">{Lang(currentCategory[0].toLocaleUpperCase() + currentCategory.slice(1))}</h2>
+                <button onClick={onClearCategory} className="btn-transparent"><Icon icon='material-symbols:close' /></button>
+              </div>
+              : <h2>{Lang('All categories')}.</h2>
+          }
           <div className="pt-2 be-md-1 pe-md-2">
             {
               search.length == 0 && hasLoaded
-              ?  <WithoutResults /> 
-              : search.map((news, index) => <NewsCardLg key={index} {...news} />)
+                ? <WithoutResults />
+                : search.map((news, index) => <NewsCardLg key={index} {...news} />)
             }
           </div>
 

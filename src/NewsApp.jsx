@@ -34,7 +34,7 @@ function NewsApp() {
 
   useEffect(() => {
     if (navigator.geolocation) {
-    
+
       navigator.permissions
         .query({ name: "geolocation" })
         .then((permissionStatus) => {
@@ -49,7 +49,7 @@ function NewsApp() {
             console.error("No se pudo obtener las coordenadas")
           });
 
-          
+
           permissionStatus.onchange = () => {
 
             navigator.geolocation.getCurrentPosition(({ coords }) => {
@@ -61,7 +61,7 @@ function NewsApp() {
               console.error("No se pudo obtener las coordenadas")
             });
 
-       
+
             console.log(
               `geolocation permission state has changed to ${permissionStatus.state}`,
             );
@@ -84,7 +84,7 @@ function NewsApp() {
     onSuccess: (data) => {
       const [today, { list: weathers, city }] = data;
 
-    
+
       if (localStorage.getItem('country')) {
         dispatch(setCountry(localStorage.getItem('country')))
       }
@@ -100,6 +100,7 @@ function NewsApp() {
   })
   //**************End Query weather
 
+  //**************Query news
   const { refetch: refetchNews } = useQuery({
     queryKey: ['news'],
     queryFn: async () => {
@@ -110,21 +111,23 @@ function NewsApp() {
         const data = [...res1.data.results, ...res2.data.results]
         dispatch(setNews({ news: data }))
       } catch (error) {
-        
+
         dispatch(setNews({ news: [] }))
       }
-      
+
 
 
     },
     enabled: false,
   });
 
+  //End Query news
   useEffect(() => {
-    if (lang,country) {
+    if (lang && country) {
+
       refetchNews()
     }
-  }, [lang, country ,refetchNews])
+  }, [lang, country, refetchNews])
 
 
   const countRequest = useIsFetching() + useIsMutating();
@@ -134,7 +137,7 @@ function NewsApp() {
       {/* Loader */}
       {(countRequest || !lat) && <Loader />}
 
-      <AppRoute/>
+      <AppRoute />
     </>
   )
 }
