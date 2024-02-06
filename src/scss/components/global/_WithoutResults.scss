@@ -2,10 +2,10 @@
 @use '../../abstracts/mixins' as m;
 
 .without-results{
-    height: 80vh;
+    height: 60vh;
     position: relative;
     &__img{
-        background-image: url(no-found.png);
+        background-image: url(no-found.png),url(react-news-app/no-found.png);
         height: 100%;
         background-repeat: no-repeat;
         background-size: cover;
