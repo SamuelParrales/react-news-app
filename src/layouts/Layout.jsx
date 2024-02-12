@@ -11,7 +11,7 @@ export const Layout = ({ children }) => {
   const { news } = useSelector(state => state.news)
   const countRequest = useRequestCounter();
   const [hasLoaded, setHasLoaded] = useState(false);
-
+  const {lat } = useSelector(state => state.session);
   //Recordar: Primero se renderiza el componente y luego se ejecuta el useEffect
   useEffect(() => {
     let timer = null;
@@ -35,7 +35,7 @@ export const Layout = ({ children }) => {
       <Header />
       <NavBar />
       {
-        news.length == 0 && hasLoaded
+        news.length == 0 && hasLoaded && lat
           ? <WithoutResults />
           :
           <>

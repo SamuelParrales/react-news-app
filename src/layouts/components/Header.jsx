@@ -10,6 +10,11 @@ import { NavLink, useNavigate, useSearchParams } from "react-router-dom";
 import { useLang } from "../../hooks";
 import { setSearchText } from "../../store/aside/newsSlice";
 
+// Logos
+import logo from '/logo.png';
+import logoSm from '/logo-sm.png';
+
+
 export const Header = memo(function Header(){
 
   const [visibleModalSetting, setVisibleModalSetting] = useState(false);
@@ -64,8 +69,8 @@ export const Header = memo(function Header(){
       <div className="header__content container">
         <div className="header__logo-container">
           <NavLink className='header__btn-home' to='/'>
-            <img className="header__logo" src="/logo.png" alt="" />
-            <img className="header__logo-sm" src="/logo-sm.png" alt="" />
+            <img className="header__logo" src={logo} alt="" />
+            <img className="header__logo-sm" src={logoSm} alt="" />
           </NavLink>
         </div>
 

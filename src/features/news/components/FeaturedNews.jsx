@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types';
 import { useEffect, useRef } from 'react';
+import spinner from "/spinner.gif";
+import imgBlur from "/img-blur.jpg";
 
-export const FeaturedNews = ({title='',description='',link,image_url='/spinner.gif'}) => {
+export const FeaturedNews = ({title='',description='',link,image_url=spinner}) => {
   const featuredNews = useRef(null);
 
   useEffect(()=>{
@@ -17,7 +19,7 @@ export const FeaturedNews = ({title='',description='',link,image_url='/spinner.g
     else 
     {
       featuredNews.current.style.backgroundImage = `
-      url(${image_url}),url(/img-blur.jpg)
+      url(${image_url}),url(${imgBlur})
       `;
       featuredNews.current.style.backgroundSize= '10%,cover';
       featuredNews.current.style.backgroundPosition= 'center';
