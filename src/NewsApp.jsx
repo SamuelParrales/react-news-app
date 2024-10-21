@@ -8,6 +8,8 @@ import { newsApi } from "./api/newsApi";
 import { useEffect } from "react";
 import { Loader } from "./components/Loader";
 import { AppRoute } from "./routes/AppRoute";
+import { Modal } from "./components/Modal";
+import { useLang } from "./hooks";
 
 
 const params = new URLSearchParams();
@@ -23,9 +25,8 @@ newsParams.set('image', 1);
 
 //*************Start component */
 function NewsApp() {
-
+  const Lang = useLang();
   const dispatch = useDispatch();
-
   const { country, lang, lat } = useSelector(state => state.session);
 
   newsParams.set('language', lang);
@@ -135,8 +136,19 @@ function NewsApp() {
     <>
       {/* Loader */}
       {(countRequest || !lat) && <Loader />}
-
       <AppRoute />
+      <Modal
+            className="modal-setting"
+            title={Lang('Permission')}
+            visible={true}
+            zIndex={100}
+            unclosable = {true}
+        >
+            <div className="modal-setting__body">
+              <p>{Lang('Please, allow me to access your geolocation')}</p>
+            </div>
+
+        </Modal>
     </>
   )
 }

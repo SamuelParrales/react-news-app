@@ -31,5 +31,8 @@ export const zh={
     Setting: '优先',
     "All categories": '所有类别',
     "What do you want to search for?": "您想要寻找什么？",
-    'No results found': '未找到结果'
+    'No results found': '未找到结果',
+    'Permission': '允许',
+    'Please, allow me to access your geolocation': '请允许我访问您的地理位置', 
+
 }

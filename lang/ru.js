@@ -31,5 +31,7 @@ export const ru={
     Setting: 'предпочтения',
     "All categories": 'Bce категории',
     "What do you want to search for?": "Что вы хотите найти?",
-    'No results found': 'результатов не найдено'
+    'No results found': 'результатов не найдено',
+    'Permission': 'Разрешение',
+    'Please, allow me to access your geolocation': 'Пожалуйста, разрешите мне доступ к вашей геолокации',
 }

@@ -31,5 +31,8 @@ export const es={
     Setting: 'Preferencias',
     "All categories": 'Todas las categorías',
     "What do you want to search for?": "¿Que deseas buscar?",
-    'No results found': 'No se han encontrado resultados'
+    'No results found': 'No se han encontrado resultados',
+    'Permission': 'Permiso',
+    'Please, allow me to access your geolocation': 'Por favor, permite que pueda acceder a tu geolocalización', 
+
 }

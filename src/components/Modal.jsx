@@ -7,7 +7,9 @@ export const Modal = function Modal({
         title = 'Title', 
         className, 
         onHide,
-        children 
+        children,
+        zIndex = 1,
+        unclosable = false,
     }) {
 
         const refModal = useRef(null);
@@ -39,7 +41,7 @@ export const Modal = function Modal({
     return (
         (render)   //Para que la animación funcione
         &&
-        <div ref={refModal} className={`modal ${className} `}>
+        <div ref={refModal} className={`modal ${className} `} style={{zIndex}}>
 
             <div className="modal__content">
                 <div className="modal__header">
@@ -47,6 +49,7 @@ export const Modal = function Modal({
                     <button 
                         className='modal__close'
                         onClick={onHide}
+                        style={{display:`${unclosable? 'none': ''}`}}
                     >
                         <Icon icon='material-symbols:close'/>
                     </button>
@@ -57,7 +60,7 @@ export const Modal = function Modal({
                 </div>
                 <hr />
                 <div className="modal__footer">
-                    <button className='modal__btn' onClick={onHide}>{Lang('Close')}</button>
+                    <button style={{display:`${unclosable? 'none': ''}`}} className='modal__btn' onClick={onHide}>{Lang('Close')}</button>
                 </div>
             </div>
 
@@ -73,4 +76,6 @@ Modal.propTypes = {
     visible: PropTypes.bool,
     children: PropTypes.any.isRequired,
     onHide: PropTypes.func.isRequired,
+    zIndex: PropTypes.number,
+    unclosable:PropTypes.bool,
 }
