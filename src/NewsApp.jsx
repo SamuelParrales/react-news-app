@@ -24,7 +24,6 @@ newsParams.set('image', 1);
 //*************Start component */
 function NewsApp() {
 
-
   const dispatch = useDispatch();
 
   const { country, lang, lat } = useSelector(state => state.session);
@@ -70,7 +69,7 @@ function NewsApp() {
         });
 
     }
-  }, [])
+  }, [dispatch])
 
   //**************Query weather
   useQuery({
