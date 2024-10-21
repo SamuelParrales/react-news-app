@@ -140,7 +140,7 @@ function NewsApp() {
       <Modal
             className="modal-setting"
             title={Lang('Permission')}
-            visible={true}
+            visible={!lat}
             zIndex={100}
             unclosable = {true}
         >
