@@ -97,7 +97,7 @@ export const NewsIndexPage = memo(function NewsIndexPage() {
     if (countRequest == 0) {
       timer = setTimeout(() => {
         setHasLoaded(true)
-      }, 20);
+      }, 1000);
     }
     else
       setHasLoaded(false)
@@ -118,6 +118,7 @@ export const NewsIndexPage = memo(function NewsIndexPage() {
       search: `?${searchParams.toString()}`,
     })
   }
+
   return (
     <Layout>
       <div className="global-container container">

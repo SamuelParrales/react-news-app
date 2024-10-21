@@ -6,7 +6,7 @@ export const sessionSlice = createSlice({
     initialState: {
         lang: localStorage.getItem('lang')|| window.navigator.language.slice(0,2),
         country:'',
-        lat: '',
+        lat: localStorage.getItem('lat'),
         lon: '',
     },
     reducers: {

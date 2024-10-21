@@ -18,7 +18,7 @@ export const Layout = ({ children }) => {
     if (countRequest == 0) {
       timer = setTimeout(() => {
         setHasLoaded(true)
-      }, 20);
+      }, 1000);
     }
     else {
       setHasLoaded(false);
